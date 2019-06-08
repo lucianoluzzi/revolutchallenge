@@ -1,7 +1,7 @@
 package br.com.lucianoluzzi.currencyrateconverter
 
 import android.app.Application
-import br.com.lucianoluzzi.currencyrateconverter.model.CurrenciesRateViewModel
+import br.com.lucianoluzzi.currencyrateconverter.view_model.CurrenciesRateViewModel
 import br.com.lucianoluzzi.currencyrateconverter.repository.CurrenciesRepositoryImpl
 import io.reactivex.plugins.RxJavaPlugins
 import org.koin.android.viewmodel.dsl.viewModel

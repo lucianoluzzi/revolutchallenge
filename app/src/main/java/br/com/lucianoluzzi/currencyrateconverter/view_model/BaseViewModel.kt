@@ -1,4 +1,4 @@
-package br.com.lucianoluzzi.currencyrateconverter.model
+package br.com.lucianoluzzi.currencyrateconverter.view_model
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

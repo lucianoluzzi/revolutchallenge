@@ -9,7 +9,10 @@ import br.com.lucianoluzzi.currencyrateconverter.R
 import br.com.lucianoluzzi.currencyrateconverter.databinding.CurrencyItemBinding
 import br.com.lucianoluzzi.currencyrateconverter.model.Currency
 
-class CurrencyAdapter(private val context: Context, val currencies: MutableList<Currency>) :
+class CurrencyAdapter(
+    private val context: Context,
+    val currencies: MutableList<Currency>
+) :
     RecyclerView.Adapter<CurrencyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {

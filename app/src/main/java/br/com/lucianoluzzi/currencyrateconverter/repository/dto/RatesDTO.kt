@@ -12,6 +12,7 @@ class RatesDTO {
     @SerializedName("CNY") var cny = BigDecimal(0.0)
     @SerializedName("CZK") var czk = BigDecimal(0.0)
     @SerializedName("DKK") var dkk = BigDecimal(0.0)
+    @SerializedName("EUR") var eur = BigDecimal(0.0)
     @SerializedName("GBP") var gbp = BigDecimal(0.0)
     @SerializedName("HKD") var hkd = BigDecimal(0.0)
     @SerializedName("HRK") var hrk = BigDecimal(0.0)

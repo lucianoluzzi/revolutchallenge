@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="viewModel" type="br.com.lucianoluzzi.currencyrateconverter.model.CurrenciesRateViewModel"/>
+        <variable name="viewModel" type="br.com.lucianoluzzi.currencyrateconverter.view_model.CurrenciesRateViewModel"/>
         <variable name="adapter" type="br.com.lucianoluzzi.currencyrateconverter.view.CurrencyAdapter"/>
     </data>
 
@@ -12,6 +12,8 @@
             android:background="@android:color/holo_blue_light"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             tools:context=".view.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView

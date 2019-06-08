@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.viewModelScope
 import br.com.lucianoluzzi.currencyrateconverter.R
 import br.com.lucianoluzzi.currencyrateconverter.databinding.ActivityMainBinding
-import br.com.lucianoluzzi.currencyrateconverter.model.CurrenciesRateViewModel
+import br.com.lucianoluzzi.currencyrateconverter.view_model.CurrenciesRateViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
