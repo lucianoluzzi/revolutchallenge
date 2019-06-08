@@ -17,10 +17,11 @@ class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : Ba
 
     suspend fun startFetchingRates(baseCurrency: String) = withContext(Dispatchers.IO) {
         val interval = Observable.interval(0, 1, TimeUnit.SECONDS)
-        val disposable = interval.subscribe {
-            val currenciesRate = repository.getCurrenciesRate(baseCurrency)
-            _currenciesRates.postValue(getCurrencyListFromResponse(currenciesRate))
-        }
+        val disposable = interval
+            .subscribe {
+                val currenciesRate = repository.getCurrenciesRate(baseCurrency)
+                _currenciesRates.postValue(getCurrencyListFromResponse(currenciesRate))
+            }
         addDisposable(disposable)
     }
 

@@ -35,7 +35,7 @@ android {
 dependencies {
     def retrofit_version = '2.5.0'
     def lifecycle_version = "2.2.0-alpha01"
-    def rxJavaVersion = '2.2.8'
+    def rx_java_version = '2.2.8'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -51,7 +51,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     // RX
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
