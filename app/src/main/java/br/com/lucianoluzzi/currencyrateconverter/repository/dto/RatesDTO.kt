@@ -1,0 +1,38 @@
+package br.com.lucianoluzzi.currencyrateconverter.repository.dto
+
+import java.math.BigDecimal
+
+class RatesDTO {
+    var AUD = BigDecimal(0.0)
+    var BGN = BigDecimal(0.0)
+    var BRL = BigDecimal(0.0)
+    var CAD = BigDecimal(0.0)
+    var CHF = BigDecimal(0.0)
+    var CNY = BigDecimal(0.0)
+    var CZK = BigDecimal(0.0)
+    var DKK = BigDecimal(0.0)
+    var GBP = BigDecimal(0.0)
+    var HKD = BigDecimal(0.0)
+    var HRK = BigDecimal(0.0)
+    var HUF = BigDecimal(0.0)
+    var IDR = BigDecimal(0.0)
+    var ILS = BigDecimal(0.0)
+    var INR = BigDecimal(0.0)
+    var ISK = BigDecimal(0.0)
+    var JPY = BigDecimal(0.0)
+    var KRW = BigDecimal(0.0)
+    var MXN = BigDecimal(0.0)
+    var MYR = BigDecimal(0.0)
+    var NOK = BigDecimal(0.0)
+    var NZD = BigDecimal(0.0)
+    var PHP = BigDecimal(0.0)
+    var PLN = BigDecimal(0.0)
+    var RON = BigDecimal(0.0)
+    var RUB = BigDecimal(0.0)
+    var SEK = BigDecimal(0.0)
+    var SGD = BigDecimal(0.0)
+    var THB = BigDecimal(0.0)
+    var TRY = BigDecimal(0.0)
+    var USD = BigDecimal(0.0)
+    var ZAR = BigDecimal(0.0)
+}
