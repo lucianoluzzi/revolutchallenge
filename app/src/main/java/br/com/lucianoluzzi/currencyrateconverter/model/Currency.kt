@@ -7,8 +7,6 @@ data class Currency(val id: Long, val name: String, val value: BigDecimal) {
         const val CURRENCY_VALUE_KEY = "CURRENCY_VALUE_KEY"
     }
 
-    val exibitValue = value.toString()
-
     override fun equals(other: Any?): Boolean {
         if (other !is Currency)
             return false
@@ -22,7 +20,6 @@ data class Currency(val id: Long, val name: String, val value: BigDecimal) {
         var result = id.hashCode()
         result = 31 * result + name.hashCode()
         result = 31 * result + value.hashCode()
-        result = 31 * result + exibitValue.hashCode()
         return result
     }
 }
