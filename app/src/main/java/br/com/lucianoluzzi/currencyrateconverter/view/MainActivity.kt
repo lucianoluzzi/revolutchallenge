@@ -28,7 +28,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun getRates() {
         currenciesViewModel.viewModelScope.launch {
-            currenciesViewModel.fetchRates("EUR")
+            currenciesViewModel.startFetchingRates("EUR")
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        currenciesViewModel.stopFetching()
     }
 }

@@ -1,22 +1,31 @@
 package br.com.lucianoluzzi.currencyrateconverter.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import br.com.lucianoluzzi.currencyrateconverter.repository.CurrenciesRepository
 import br.com.lucianoluzzi.currencyrateconverter.repository.dto.RatesDTO
+import io.reactivex.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.concurrent.TimeUnit
 
-class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : ViewModel() {
+class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : BaseViewModel() {
     private val _currenciesRates = MutableLiveData<List<Currency>>().apply {
         mutableListOf<List<Currency>>()
     }
     val currenciesRates: LiveData<List<Currency>> = _currenciesRates
 
-    suspend fun fetchRates(baseCurrency: String) = withContext(Dispatchers.IO) {
-        val currenciesRate = repository.getCurrenciesRate(baseCurrency)
-        _currenciesRates.postValue(getCurrencyListFromResponse(currenciesRate))
+    suspend fun startFetchingRates(baseCurrency: String) = withContext(Dispatchers.IO) {
+        val interval = Observable.interval(0, 1, TimeUnit.SECONDS)
+        with(interval) {
+            val disposable = subscribe {
+                val currenciesRate = repository.getCurrenciesRate(baseCurrency)
+                Log.d("VIEWMODEL", "request")
+                _currenciesRates.postValue(getCurrencyListFromResponse(currenciesRate))
+            }
+            addDisposable(disposable)
+        }
     }
 
     private fun getCurrencyListFromResponse(rates: RatesDTO): List<Currency> {
@@ -54,5 +63,9 @@ class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : Vi
             Currency(rates::USD.name, rates.USD),
             Currency(rates::ZAR.name, rates.ZAR)
         )
+    }
+
+    fun stopFetching() {
+        onCleared()
     }
 }
