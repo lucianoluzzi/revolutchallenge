@@ -17,7 +17,7 @@ class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : Ba
     val currenciesRates: LiveData<List<Currency>> = _currenciesRates
     private var baseCurrency: String = RatesDTO::eur.name.toUpperCase()
 
-    suspend fun startFetchingRates(baseCurrency: String) = withContext(Dispatchers.IO) {
+    suspend fun startFetchingRates() = withContext(Dispatchers.IO) {
         val interval = Observable.interval(0, 1, TimeUnit.SECONDS)
         val disposable = interval
             .subscribe {

@@ -19,13 +19,11 @@ class CurrenciesRepositoryImpl : CurrenciesRepository {
         build()
     }
 
-    override fun getCurrenciesRate(baseCurrency: String): RatesDTO {
+    override fun getCurrenciesRate(baseCurrency: String): RatesDTO? {
         val service = retrofit.create(CurrencyService::class.java)
         val call = service.getRates(baseCurrency)
         val body = call.execute().body()
 
-        return body?.rates ?: run {
-            RatesDTO()
-        }
+        return body?.rates
     }
 }

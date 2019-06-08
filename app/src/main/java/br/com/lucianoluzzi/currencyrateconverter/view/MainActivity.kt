@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getRates() {
         currenciesViewModel.viewModelScope.launch {
-            currenciesViewModel.startFetchingRates("EUR")
+            currenciesViewModel.startFetchingRates()
         }
     }
 
