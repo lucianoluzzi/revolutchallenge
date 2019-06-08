@@ -17,12 +17,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.viewModel = currenciesViewModel
+        binding.adapter = CurrencyAdapter(this, mutableListOf())
         binding.lifecycleOwner = this
     }
 
     override fun onResume() {
         super.onResume()
+        binding.viewModel = currenciesViewModel
         getRates()
     }
 

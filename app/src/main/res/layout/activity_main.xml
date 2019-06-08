@@ -2,6 +2,7 @@
 <layout>
     <data>
         <variable name="viewModel" type="br.com.lucianoluzzi.currencyrateconverter.model.CurrenciesRateViewModel"/>
+        <variable name="adapter" type="br.com.lucianoluzzi.currencyrateconverter.view.CurrencyAdapter"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +20,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:rates_adapter="@{ adapter }"
                 app:currencies="@{ viewModel.currenciesRates }"
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
