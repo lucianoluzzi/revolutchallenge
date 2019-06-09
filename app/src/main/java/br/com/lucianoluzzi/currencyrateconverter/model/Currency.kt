@@ -15,7 +15,11 @@ data class Currency(val id: Long, val name: String, var value: BigDecimal) {
                 currencies.add(Currency(0, baseCurrency, BigDecimal(1)))
                 it::class.memberProperties.forEachIndexed { index, member ->
                     if (member.getter.call(it) != null) {
-                        val currency = Currency(index.toLong() + 1, member.name, member.getter.call(it) as BigDecimal)
+                        val currency = Currency(
+                            index.toLong() + 1,
+                            member.name.toUpperCase(),
+                            member.getter.call(it) as BigDecimal
+                        )
                         currencies.add(currency)
                     }
                 }

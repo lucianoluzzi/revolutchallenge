@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import br.com.lucianoluzzi.currencyrateconverter.R
 import br.com.lucianoluzzi.currencyrateconverter.databinding.CurrencyItemBinding
@@ -12,7 +13,7 @@ import br.com.lucianoluzzi.currencyrateconverter.model.Currency
 class CurrencyAdapter(
     private val context: Context,
     val currencies: MutableList<Currency>,
-    private val itemListener: CurrencyItemListener
+    private var baseCurrency: MutableLiveData<String>
 ) :
     RecyclerView.Adapter<CurrencyViewHolder>() {
 
@@ -20,7 +21,7 @@ class CurrencyAdapter(
         val layoutInflater = LayoutInflater.from(context)
         val binding =
             DataBindingUtil.inflate<CurrencyItemBinding>(layoutInflater, R.layout.currency_item, parent, false)
-        return CurrencyViewHolder(binding, itemListener)
+        return CurrencyViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +29,7 @@ class CurrencyAdapter(
     }
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
-        holder.setCurrency(currencies[position])
+        holder.bind(currencies[position], baseCurrency)
     }
 
     override fun getItemId(position: Int): Long {

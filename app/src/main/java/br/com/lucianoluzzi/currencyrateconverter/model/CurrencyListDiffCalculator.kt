@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.DiffUtil
 
 class CurrencyListDiffCalculator(private val oldList: List<Currency>, private val newList: List<Currency>) {
     fun calculateDiff(): DiffUtil.DiffResult {
-        val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+        return DiffUtil.calculateDiff(object : DiffUtil.Callback() {
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
                 return oldList[oldItemPosition].id == newList[newItemPosition].id
             }
@@ -28,6 +28,5 @@ class CurrencyListDiffCalculator(private val oldList: List<Currency>, private va
 
             override fun getNewListSize() = newList.size
         }, true)
-        return diff
     }
 }

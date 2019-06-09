@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+        <variable name="baseCurrency" type="String"/>
         <variable name="currency" type="br.com.lucianoluzzi.currencyrateconverter.model.Currency"/>
     </data>
 
@@ -19,7 +20,7 @@
 
         <TextView
                 android:id="@+id/name"
-                android:text="@{ currency.name.toUpperCase() }"
+                android:text="@{ currency.name }"
                 android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
                 android:textAlignment="center"
                 android:textSize="13sp"
                 android:layout_marginEnd="10dp"
+                android:enabled="@{ baseCurrency == currency.name }"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/name"
