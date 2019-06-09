@@ -4,11 +4,11 @@ import br.com.lucianoluzzi.currencyrateconverter.repository.dto.RatesDTO
 import java.math.BigDecimal
 import kotlin.reflect.full.memberProperties
 
-data class Currency(val id: Long, val name: String, val value: BigDecimal) {
+data class Currency(val id: Long, val name: String, var value: BigDecimal) {
     companion object {
         const val CURRENCY_VALUE_KEY = "CURRENCY_VALUE_KEY"
 
-        fun getCurrencyListFromRatesDTO(baseCurrency: String, rates: RatesDTO?): List<Currency> {
+        fun getCurrencyListFromRatesDTO(baseCurrency: String, rates: RatesDTO?): MutableList<Currency> {
             val currencies = mutableListOf<Currency>()
 
             rates?.let {

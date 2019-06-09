@@ -7,6 +7,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/container"
             android:background="@android:color/white"
             android:orientation="vertical"
             android:layout_width="match_parent"

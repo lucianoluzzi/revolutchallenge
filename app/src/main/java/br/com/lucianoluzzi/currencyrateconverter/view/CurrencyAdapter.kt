@@ -11,7 +11,8 @@ import br.com.lucianoluzzi.currencyrateconverter.model.Currency
 
 class CurrencyAdapter(
     private val context: Context,
-    val currencies: MutableList<Currency>
+    val currencies: MutableList<Currency>,
+    private val itemListener: CurrencyItemListener
 ) :
     RecyclerView.Adapter<CurrencyViewHolder>() {
 
@@ -19,7 +20,7 @@ class CurrencyAdapter(
         val layoutInflater = LayoutInflater.from(context)
         val binding =
             DataBindingUtil.inflate<CurrencyItemBinding>(layoutInflater, R.layout.currency_item, parent, false)
-        return CurrencyViewHolder(binding)
+        return CurrencyViewHolder(binding, itemListener)
     }
 
     override fun getItemCount(): Int {
