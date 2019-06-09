@@ -17,7 +17,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.adapter = CurrencyAdapter(this, mutableListOf(), currenciesViewModel.baseCurrency)
+        binding.adapter = CurrencyAdapter(
+            this,
+            mutableListOf(),
+            currenciesViewModel.baseCurrency,
+            currenciesViewModel.baseCurrencyValue
+        )
         binding.lifecycleOwner = this
     }
 

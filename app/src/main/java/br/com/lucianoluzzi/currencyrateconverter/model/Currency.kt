@@ -8,17 +8,21 @@ data class Currency(val id: Long, val name: String, var value: BigDecimal) {
     companion object {
         const val CURRENCY_VALUE_KEY = "CURRENCY_VALUE_KEY"
 
-        fun getCurrencyListFromRatesDTO(baseCurrency: String, rates: RatesDTO?): MutableList<Currency> {
+        fun getCurrencyListFromRatesDTO(
+            baseCurrency: String,
+            baseCurrencyValue: BigDecimal,
+            rates: RatesDTO?
+        ): MutableList<Currency> {
             val currencies = mutableListOf<Currency>()
 
             rates?.let {
-                currencies.add(Currency(0, baseCurrency, BigDecimal(1)))
+                currencies.add(Currency(0, baseCurrency, baseCurrencyValue))
                 it::class.memberProperties.forEachIndexed { index, member ->
                     if (member.getter.call(it) != null) {
                         val currency = Currency(
                             index.toLong() + 1,
                             member.name.toUpperCase(),
-                            member.getter.call(it) as BigDecimal
+                            baseCurrencyValue.multiply(member.getter.call(it) as BigDecimal)
                         )
                         currencies.add(currency)
                     }

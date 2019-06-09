@@ -7,6 +7,7 @@ import br.com.lucianoluzzi.currencyrateconverter.repository.dto.RatesDTO
 import io.reactivex.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.math.BigDecimal
 import java.util.concurrent.TimeUnit
 
 class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : BaseViewModel() {
@@ -16,11 +17,20 @@ class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : Ba
     var baseCurrency: MutableLiveData<String> = MutableLiveData<String>().apply {
         RatesDTO::eur.name.toUpperCase()
     }
+    var baseCurrencyValue: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>().apply {
+        BigDecimal(1)
+    }
 
     private fun getBaseCurrency() = baseCurrency.value?.let {
         it
     } ?: run {
         RatesDTO::eur.name.toUpperCase()
+    }
+
+    private fun getBaseCurrencyValue() = baseCurrencyValue.value?.let {
+        it
+    } ?: run {
+        BigDecimal(1)
     }
 
     suspend fun startFetchingRates() = withContext(Dispatchers.IO) {
@@ -29,7 +39,7 @@ class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : Ba
             .subscribe {
                 val currenciesRate = repository.getCurrenciesRate(getBaseCurrency().toUpperCase())
                 currenciesRates.postValue(
-                    Currency.getCurrencyListFromRatesDTO(getBaseCurrency(), currenciesRate)
+                    Currency.getCurrencyListFromRatesDTO(getBaseCurrency(), getBaseCurrencyValue(), currenciesRate)
                 )
             }
         addDisposable(disposable)
