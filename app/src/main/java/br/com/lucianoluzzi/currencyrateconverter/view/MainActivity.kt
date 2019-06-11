@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.adapter = currenciesViewModel.currencyAdapter
         binding.lifecycleOwner = this
+
+        currenciesViewModel.baseCurrency.observeForever {
+            binding.currencies.smoothScrollToPosition(0)
+        }
     }
 
     override fun onResume() {
