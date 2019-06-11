@@ -6,7 +6,7 @@ This is a currency rate app, which fetches a list of currencies from a webservic
 
 I choose to use MVVM (Model-View-ViewModel) as my project architecture in order to provide a cleaner code, with clear separation between the view, the data and the business logic.
 
-I used databinding and livedata to provide a two-way awareness between UI events and data changes, aswell as discarding the need of handling data change callbacks and UI event listeners.
+I used databinding and livedata to provide two-way awareness between UI events and data changes, aswell as discarding the need of handling data change callbacks and UI event listeners.
 
 I used kotlin coroutines as a seemingly effortless way of achieving background network operation with UI callback, which proved to be much cleaner than using RxJava.
 Opted to use RxJava to control the fetch scheduled interval because the coroutine timer component is still experimental.
