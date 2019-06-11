@@ -21,14 +21,15 @@ class CurrencyViewHolder(private val binding: CurrencyItemBinding) :
                 baseCurrency.value = it.name
             }
         }
-        setTextChangedListener(baseCurrencyValue)
+        binding.value.addTextChangedListener(getTextChangedListener(baseCurrencyValue))
 
         binding.currency = currency
         binding.baseCurrency = baseCurrency.value
+        binding.executePendingBindings()
     }
 
-    private fun setTextChangedListener(baseCurrencyValue: MutableLiveData<BigDecimal>) {
-        binding.value.addTextChangedListener(object : TextWatcher {
+    private fun getTextChangedListener(baseCurrencyValue: MutableLiveData<BigDecimal>): TextWatcher {
+        return object : TextWatcher {
             override fun afterTextChanged(inputedValue: Editable?) {
                 if (binding.value.hasFocus()) {
                     if (inputedValue.toString().isEmpty())
@@ -41,7 +42,6 @@ class CurrencyViewHolder(private val binding: CurrencyItemBinding) :
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-        })
+        }
     }
 }

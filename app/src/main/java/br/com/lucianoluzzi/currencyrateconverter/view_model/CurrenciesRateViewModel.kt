@@ -15,10 +15,10 @@ class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : Ba
         mutableListOf<List<Currency>>()
     }
     var baseCurrency: MutableLiveData<String> = MutableLiveData<String>().apply {
-        RatesDTO::eur.name.toUpperCase()
+        value = RatesDTO::eur.name.toUpperCase()
     }
     var baseCurrencyValue: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>().apply {
-        BigDecimal(1)
+        value = BigDecimal(1)
     }
 
     private fun getBaseCurrency() = baseCurrency.value?.let {
