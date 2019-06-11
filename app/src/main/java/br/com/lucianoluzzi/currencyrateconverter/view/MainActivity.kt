@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.adapter = currenciesViewModel.currencyAdapter
+        binding.viewModel = currenciesViewModel
         binding.lifecycleOwner = this
 
         currenciesViewModel.baseCurrency.observeForever {
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        binding.viewModel = currenciesViewModel
         getRates()
     }
 

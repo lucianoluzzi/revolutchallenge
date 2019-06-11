@@ -3,6 +3,7 @@ package br.com.lucianoluzzi.currencyrateconverter.repository
 import br.com.lucianoluzzi.currencyrateconverter.repository.dto.RatesDTO
 import br.com.lucianoluzzi.currencyrateconverter.repository.service.CurrencyService
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CurrenciesRepositoryImpl : CurrenciesRepository {
     companion object {
@@ -15,7 +16,7 @@ class CurrenciesRepositoryImpl : CurrenciesRepository {
 
     private fun retrofit() = with(Retrofit.Builder()) {
         baseUrl(BASE_URL)
-        addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create())
+        addConverterFactory(GsonConverterFactory.create())
         build()
     }
 

@@ -16,16 +16,23 @@ class CurrencyViewHolder(private val binding: CurrencyItemBinding) :
         baseCurrency: MutableLiveData<String>,
         baseCurrencyValue: MutableLiveData<BigDecimal>
     ) {
+        setListeners(baseCurrency, baseCurrencyValue)
+        setBindingVariables(currency, baseCurrency.value)
+        binding.executePendingBindings()
+    }
+
+    private fun setListeners(baseCurrency: MutableLiveData<String>, baseCurrencyValue: MutableLiveData<BigDecimal>) {
         binding.container.setOnClickListener {
             binding.currency?.let {
                 baseCurrency.value = it.name
             }
         }
         binding.value.addTextChangedListener(getTextChangedListener(baseCurrencyValue))
+    }
 
+    private fun setBindingVariables(currency: Currency, baseCurrency: String?) {
         binding.currency = currency
-        binding.baseCurrency = baseCurrency.value
-        binding.executePendingBindings()
+        binding.baseCurrency = baseCurrency
     }
 
     private fun getTextChangedListener(baseCurrencyValue: MutableLiveData<BigDecimal>): TextWatcher {

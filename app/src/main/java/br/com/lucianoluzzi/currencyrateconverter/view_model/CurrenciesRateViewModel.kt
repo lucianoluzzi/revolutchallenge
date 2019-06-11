@@ -29,7 +29,7 @@ class CurrenciesRateViewModel(private val applicationContext: Context, private v
     var baseCurrency: MutableLiveData<String> = MutableLiveData<String>().apply {
         value = RatesDTO::eur.name.toUpperCase()
     }
-    var baseCurrencyValue: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>().apply {
+    private var baseCurrencyValue: MutableLiveData<BigDecimal> = MutableLiveData<BigDecimal>().apply {
         value = BigDecimal(1)
     }
 

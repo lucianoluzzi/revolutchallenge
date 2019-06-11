@@ -17,10 +17,10 @@ data class Currency(val id: Long, val name: String, var value: BigDecimal) {
 
             rates?.let {
                 currencies.add(Currency(0, baseCurrency, baseCurrencyValue))
-                it::class.memberProperties.forEachIndexed { index, member ->
+                it::class.memberProperties.forEachIndexed { _, member ->
                     if (member.getter.call(it) != null) {
                         val currency = Currency(
-                            index.toLong() + 1,
+                            member.name.hashCode().toLong(),
                             member.name.toUpperCase(),
                             baseCurrencyValue.multiply(member.getter.call(it) as BigDecimal)
                         )

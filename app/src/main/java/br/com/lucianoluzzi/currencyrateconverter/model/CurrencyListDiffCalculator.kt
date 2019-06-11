@@ -18,7 +18,7 @@ class CurrencyListDiffCalculator(private val oldList: List<Currency>, private va
                 val diffBundle = Bundle()
                 val oldItem = oldList[oldItemPosition]
                 val newItem = newList[newItemPosition]
-                if (oldItem.value == newItem.value)
+                if (oldItem.value != newItem.value)
                     diffBundle.putDouble(Currency.CURRENCY_VALUE_KEY, newItem.value.toDouble())
 
                 return diffBundle
