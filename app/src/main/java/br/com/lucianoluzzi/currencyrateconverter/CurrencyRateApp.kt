@@ -11,7 +11,7 @@ import org.koin.dsl.module
 class CurrencyRateApp : Application() {
     private val modules = module {
         viewModel {
-            CurrenciesRateViewModel(CurrenciesRepositoryImpl())
+            CurrenciesRateViewModel(applicationContext, CurrenciesRepositoryImpl())
         }
 
         single {

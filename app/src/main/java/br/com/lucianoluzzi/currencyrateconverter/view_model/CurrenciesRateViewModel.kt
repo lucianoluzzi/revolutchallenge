@@ -1,16 +1,28 @@
 package br.com.lucianoluzzi.currencyrateconverter.view_model
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import br.com.lucianoluzzi.currencyrateconverter.model.Currency
 import br.com.lucianoluzzi.currencyrateconverter.repository.CurrenciesRepository
 import br.com.lucianoluzzi.currencyrateconverter.repository.dto.RatesDTO
+import br.com.lucianoluzzi.currencyrateconverter.view.CurrencyAdapter
 import io.reactivex.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.math.BigDecimal
 import java.util.concurrent.TimeUnit
 
-class CurrenciesRateViewModel(private val repository: CurrenciesRepository) : BaseViewModel() {
+class CurrenciesRateViewModel(private val applicationContext: Context, private val repository: CurrenciesRepository) :
+    BaseViewModel() {
+    val currencyAdapter: CurrencyAdapter by lazy {
+        CurrencyAdapter(
+            applicationContext,
+            mutableListOf(),
+            baseCurrency,
+            baseCurrencyValue
+        )
+    }
+
     val currenciesRates: MutableLiveData<MutableList<Currency>> = MutableLiveData<MutableList<Currency>>().apply {
         mutableListOf<List<Currency>>()
     }
