@@ -27,6 +27,6 @@ class CurrencyListDiffCalculator(private val oldList: List<Currency>, private va
             override fun getOldListSize() = oldList.size
 
             override fun getNewListSize() = newList.size
-        }, true)
+        })
     }
 }
