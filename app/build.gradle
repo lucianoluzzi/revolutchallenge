@@ -11,10 +11,6 @@ android {
         enabled = true
     }
 
-    repositories {
-        google()
-    }
-
     compileSdkVersion 28
     defaultConfig {
         applicationId "br.com.lucianoluzzi.currencyrateconverter"

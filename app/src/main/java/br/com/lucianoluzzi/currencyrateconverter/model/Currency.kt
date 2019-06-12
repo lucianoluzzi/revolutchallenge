@@ -32,20 +32,4 @@ data class Currency(val id: Long, val name: String, var value: BigDecimal) {
             return currencies
         }
     }
-
-    override fun equals(other: Any?): Boolean {
-        if (other !is Currency)
-            return false
-
-        return this.id == other.id &&
-                this.name == other.name &&
-                this.value == other.value
-    }
-
-    override fun hashCode(): Int {
-        var result = id.hashCode()
-        result = 31 * result + name.hashCode()
-        result = 31 * result + value.hashCode()
-        return result
-    }
 }

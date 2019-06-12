@@ -38,17 +38,22 @@ class CurrencyViewHolder(private val binding: CurrencyItemBinding) :
     private fun getTextChangedListener(baseCurrencyValue: MutableLiveData<BigDecimal>): TextWatcher {
         return object : TextWatcher {
             override fun afterTextChanged(inputedValue: Editable?) {
-                if (binding.value.hasFocus()) {
-                    if (inputedValue.toString().isEmpty())
-                        baseCurrencyValue.value = BigDecimal(1)
-                    else
-                        baseCurrencyValue.value = BigDecimal(inputedValue.toString())
-                }
+                if (binding.value.hasFocus())
+                    baseCurrencyValue.value = getBaseValue(inputedValue)
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
+    }
+
+    private fun getBaseValue(inputedValue: Editable?): BigDecimal {
+        return BigDecimal(
+            if (inputedValue.toString().isEmpty())
+                1.toString()
+            else
+                inputedValue.toString()
+        )
     }
 }
