@@ -14,3 +14,10 @@ Opted to use RxJava to control the fetch scheduled interval because the coroutin
 # Tech-stack
 
 Kotlin, Koin, ViewModel, LiveData, Lifecycle, Databinding/Binding Adapters, Kotlin Coroutines
+
+# Next steps
+
+With more time, I would focus into implementing unit, integration and UI tests.
+For the tests I would adopt JUnit, Mockito, Roboletric, Koin mocking features and Espresso.
+
+I would also focus a bit more in the user experience, handling the loading state of the list and eventual network errors, optimizing the performance of the dataset changes and making the list respond to user action more fluidly.
